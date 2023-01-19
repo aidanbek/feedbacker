@@ -23,6 +23,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $role_id
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Feedback[] $feedbacks
+ * @property-read int|null $feedbacks_count
  * @property-read \App\Models\Role|null $role
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
@@ -106,6 +108,10 @@ class User extends Authenticatable
         return 'client.feedback.create';
     }
 
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'creation_user_id', 'id');
+    }
 
     public static function scopeManager($q)
     {

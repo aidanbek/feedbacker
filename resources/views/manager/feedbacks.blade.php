@@ -24,7 +24,7 @@
                         <tbody>
                         @foreach($feedbacks as $feedback)
                             <tr>
-                                <td class="border px-8 py-4 text-center">{{ $feedback->created_at->addHours(6) }}</td>
+                                <td class="border px-8 py-4 text-center">{{ $feedback->created_at }}</td>
                                 <td class="border px-8 py-4">{{ $feedback->subject }}</td>
                                 <td class="border px-8 py-4">{{ $feedback->message }}</td>
                                 <td class="border px-8 py-4 text-center">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\FeedbackLimit;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,7 @@ class CreateFeedback extends FormRequest
     public function rules(): array
     {
         return [
-            'subject' => ['required', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:255', new FeedbackLimit()],
             'message' => ['required', 'string'],
             'attachment' => ['nullable', 'file', 'max:2048']
         ];
