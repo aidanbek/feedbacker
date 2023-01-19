@@ -30,6 +30,8 @@ class FeedbackController extends Controller
             $feedback->save();
         }
 
+        dispatch(new SendEmailJob($feedback));
+
         return redirect()->route('client.feedback.create')->with('success', true);
     }
 }
