@@ -25,3 +25,16 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware('auth')->group(function () {
+    Route::middleware('can:client')->group(function () {
+        Route::get('feedback', [App\Http\Controllers\Client\FeedbackController::class, 'create'])->name('client.feedback.create');
+        Route::post('feedback', [App\Http\Controllers\Client\FeedbackController::class, 'store'])->name('client.feedback.store');
+    });
+
+    Route::middleware('can:manager')->group(function () {
+        Route::get('feedbacks', [App\Http\Controllers\Manager\FeedbackController::class, 'index'])->name('manager.feedbacks.index');
+        Route::post('feedbacks/{id}/answered', [App\Http\Controllers\Manager\FeedbackController::class, 'markAsAnswered'])->name('manager.feedbacks.markAsAnswered');
+        Route::get('feedbacks/{id}/attachment', [App\Http\Controllers\Manager\FeedbackController::class, 'downloadAttachment'])->name('manager.feedbacks.downloadAttachment');
+    });
+});

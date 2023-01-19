@@ -48,6 +48,16 @@ class User extends Authenticatable
         return $this->hasOne(Role::class);
     }
 
+    public function isClient(): bool
+    {
+        return $this->role_id === Role::CLIENT;
+    }
+
+    public function isManager(): bool
+    {
+        return $this->role_id === Role::MANAGER;
+    }
+
     public function getHomeRoute(): string
     {
         if ($this->isManager()) {
@@ -55,5 +65,11 @@ class User extends Authenticatable
         }
 
         return 'client.feedback.create';
+    }
+
+
+    public static function scopeManager($q)
+    {
+        return $q->where('role_id', Role::MANAGER);
     }
 }
