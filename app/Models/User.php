@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class);
     }
+
+    public function getHomeRoute(): string
+    {
+        if ($this->isManager()) {
+            return 'manager.feedbacks.index';
+        }
+
+        return 'client.feedback.create';
+    }
 }
