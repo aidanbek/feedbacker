@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;
-use Illuminate\Auth\Access\AuthorizationException;
 
 class FeedbackController extends Controller
 {

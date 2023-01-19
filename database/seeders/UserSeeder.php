@@ -19,10 +19,10 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => env('SEEDER_MANAGER_NAME', 'John Doe'),
-                'email' => env('SEEDER_MANAGER_EMAIl', 'John Doe'),
+                'name' => config('app.SEEDER_MANAGER_NAME'),
+                'email' => config('app.SEEDER_MANAGER_EMAIl'),
                 'email_verified_at' => now(),
-                'password' => Hash::make(env('SEEDER_MANAGER_PASSWORD', 'password')),
+                'password' => Hash::make(config('app.SEEDER_MANAGER_PASSWORD')),
                 'role_id' => 0,
             ],
         ]);

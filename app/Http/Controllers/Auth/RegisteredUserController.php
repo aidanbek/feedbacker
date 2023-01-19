@@ -48,6 +48,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(Auth::user()->getHomeRoute());
+        return redirect()->route(Auth::user()->getHomeRoute());
     }
 }

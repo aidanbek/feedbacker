@@ -212,4 +212,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'SEEDER_MANAGER_NAME' => env('SEEDER_MANAGER_NAME', 'John Doe'),
+    'SEEDER_MANAGER_EMAIl' => env('SEEDER_MANAGER_EMAIl', 'John Doe'),
+    'SEEDER_MANAGER_PASSWORD' => env('SEEDER_MANAGER_PASSWORD', 'password'),
 ];
